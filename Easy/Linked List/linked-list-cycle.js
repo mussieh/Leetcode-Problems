@@ -32,9 +32,10 @@ function print(head) {
     console.log(arr);
 }
 
-function middleNode(head) {
+function hasCycle(head) {
     let slow = head;
     let fast = head;
+
     while (fast != null && fast.next != null) {
         slow = slow.next;
         fast = fast.next.next;
@@ -43,5 +44,5 @@ function middleNode(head) {
     return false;
 }
 
-let head = mll([3, 2, 0, -4]);
-console.log(head);
+let head = mll([1]);
+console.log(hasCycle(head));

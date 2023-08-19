@@ -1,10 +1,3 @@
-class ListNode {
-    constructor(val, next) {
-        this.val = val === undefined ? 0 : val;
-        this.next = next === undefined ? null : next;
-    }
-}
-
 function mll(arr) {
     if (arr.length === 0) return null;
     let head = new ListNode(arr[0]);
@@ -31,17 +24,3 @@ function print(head) {
     }
     console.log(arr);
 }
-
-function middleNode(head) {
-    let slow = head;
-    let fast = head;
-    while (fast != null && fast.next != null) {
-        slow = slow.next;
-        fast = fast.next.next;
-        if (slow === fast) return true;
-    }
-    return false;
-}
-
-let head = mll([3, 2, 0, -4]);
-console.log(head);

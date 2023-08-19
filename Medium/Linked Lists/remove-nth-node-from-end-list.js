@@ -22,7 +22,6 @@ function mll(arr) {
 }
 
 function print(head) {
-    console.log(head);
     let arr = [];
     let current = head;
     while (current) {
@@ -32,16 +31,41 @@ function print(head) {
     console.log(arr);
 }
 
-function middleNode(head) {
+function removeNthFromEnd(head, n) {
+    if (!head.next) return null;
     let slow = head;
     let fast = head;
-    while (fast != null && fast.next != null) {
+    let size = 0;
+    let counter = 0;
+    while (fast && fast.next) {
         slow = slow.next;
         fast = fast.next.next;
-        if (slow === fast) return true;
+        size++;
+        if (!fast) {
+            size *= 2;
+        } else if (!fast.next) {
+            size = size * 2 + 1;
+        }
     }
-    return false;
+    slow = head;
+    let beforeNode;
+    let removedNode;
+    while (slow) {
+        if (counter === size - n - 1) {
+            beforeNode = slow;
+            removedNode = beforeNode.next;
+        }
+        counter++;
+        slow = slow.next;
+    }
+    if (removedNode) {
+        beforeNode.next = removedNode.next;
+        removedNode.next = null;
+    } else {
+        head = head.next;
+    }
+    return head;
 }
 
-let head = mll([3, 2, 0, -4]);
-console.log(head);
+let head = mll([1, 2]);
+console.log(removeNthFromEnd(head, 1));
