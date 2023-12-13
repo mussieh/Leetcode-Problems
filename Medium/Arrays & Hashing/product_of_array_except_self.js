@@ -23,7 +23,9 @@ function productExceptSelf(nums) {
         answer.push(suffix[j] * prefix[i]);
         i++;
     }
+    console.log(prefix);
+    console.log(suffix);
     return answer;
 }
 
-console.log(productExceptSelf([-30, -40, -50, 1, 2, 3]));
+console.log(productExceptSelf([1, 2, 3, 4]));
